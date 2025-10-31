@@ -1,52 +1,57 @@
-// Array com dados de músicas populares
+/*
+ * Array de músicas com imagens locais
+ * - Todas as imagens agora estão na pasta 'imagens/'
+ * - Mantemos o fallback para o placeholder.jpg caso necessário
+ * - Caminhos relativos para melhor portabilidade
+ */
 const musicas = [
     {
         titulo: "Bohemian Rhapsody",
         artista: "Queen",
         album: "A Night at the Opera",
-        imagem: "https://i.scdn.co/image/ab67616d0000b273b83a777e8ac0e14e6ffa4d87"
+        imagem: "imagens/Bohemian.jpg"
     },
     {
         titulo: "Billie Jean",
         artista: "Michael Jackson",
         album: "Thriller",
-        imagem: "https://i.scdn.co/image/ab67616d0000b2734121faee8df82c526cbab2be"
+        imagem: "imagens/billie.jpg"
     },
     {
         titulo: "Garota de Ipanema",
         artista: "Tom Jobim",
         album: "The Composer of Desafinado, Plays",
-        imagem: "https://i.scdn.co/image/ab67616d0000b273e33f00d40d41ba0c7c1c2b91"
+        imagem: "imagens/garota ipanema.jpg"
     },
     {
         titulo: "Shape of You",
         artista: "Ed Sheeran",
         album: "÷ (Divide)",
-        imagem: "https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96"
+        imagem: "imagens/shape.jpg"
     },
     {
         titulo: "Chega de Saudade",
         artista: "João Gilberto",
         album: "Chega de Saudade",
-        imagem: "https://i.scdn.co/image/ab67616d0000b273e12f26f5ab291e1b3c6c6c66"
+        imagem: "imagens/chega de sau.jpg"
     },
     {
         titulo: "Sweet Child O' Mine",
         artista: "Guns N' Roses",
         album: "Appetite for Destruction",
-        imagem: "https://i.scdn.co/image/ab67616d0000b273e44963b8bb127552ac4dbfd4"
+        imagem: "imagens/sweet.jpg"
     },
     {
         titulo: "Mas Que Nada",
         artista: "Sergio Mendes & Brasil '66",
         album: "Herb Alpert Presents",
-        imagem: "https://i.scdn.co/image/ab67616d0000b273519c4201d8f0acfcb22d5c12"
+        imagem: "imagens/mas que nada.jpg"
     },
     {
         titulo: "Uptown Funk",
         artista: "Mark Ronson ft. Bruno Mars",
         album: "Uptown Special",
-        imagem: "https://i.scdn.co/image/ab67616d0000b273e419ccba0baa8bd3f3d7abf2"
+        imagem: "imagens/uptown.jpg"
     }
 ];
 
