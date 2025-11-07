@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --spotify-green: #1DB954;
+    --background-base: #121212;
+    --background-highlight: #282828;
+    --background-press: #000;
+    --text-base: #FFFFFF;
+    --text-subdued: #A7A7A7;
+}
+
+body {
+    font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--background-base);
+    color: var(--text-base);
+    line-height: 1.5;
+}
+
+/* Header Styles */
+.app-header {
+    background-color: var(--background-highlight);
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* 
+    Por que usamos display: flex aqui?
+    - display: flex cria um container flexível que permite:
+    - Alinhar itens horizontalmente e verticalmente com facilidade
+    - justify-content: space-between -> distribui espaço entre os elementos (logo e busca)
+    - align-items: center -> centraliza os itens verticalmente
+    - Muito mais fácil que usar float ou position absolute
+*/
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* Search Bar */
+.search-container input {
+    background-color: #FFFFFF1A;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 36px 8px 16px;
+    color: var(--text-base);
+    font-size: 14px;
+    width: 300px;
+    transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+    outline: none;
+    background-color: #FFFFFF2A;
+    width: 320px;
+}
+
+/* Main Content */
+.main-content {
+    padding: 24px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.music-section h2 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Music Grid */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+    padding: 0 0 24px;
+}
+
+/* Music Card */
+.musica-card {
+    background-color: var(--background-highlight);
+    border-radius: 8px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.musica-card:hover {
+    background-color: #3E3E3E;
+    transform: translateY(-4px);
+}
+
+/* 
+    Para que serve box-shadow no card?
+    - Cria uma sombra que dá sensação de profundidade
+    - Parâmetros do box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3)
+      - 0 -> deslocamento horizontal (não tem)
+      - 8px -> deslocamento vertical (sombra para baixo)
+      - 24px -> blur/suavização da sombra
+      - rgba(0,0,0,0.3) -> cor preta com 30% de opacidade
+    - Isso faz o card parecer "flutuando" na interface
+    - Similar ao que o Spotify usa para destacar elementos
+*/
+.musica-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.musica-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.musica-card p {
+    color: var(--text-subdued);
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Play Button Overlay */
+.musica-card::after {
+    content: '';
+    position: absolute;
+    right: 16px;
+    bottom: 90px;
+    width: 48px;
+    height: 48px;
+    background-color: var(--spotify-green);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff"><path d="M8 5v14l11-7z"/></svg>');
+    background-size: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.musica-card:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Player Styles */
+.player-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--background-press);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.player-thumb {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+}
+
+.player-text h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.player-text p {
+    font-size: 12px;
+    color: var(--text-subdued);
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    max-width: 400px;
+    margin: 0 20px;
+}
+
+.btn-play-pause {
+    background: var(--spotify-green);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background: #4f4f4f;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--spotify-green);
+    width: 0;
+    transition: width 0.1s linear;
+}
+
+.musica-card.tocando {
+    background-color: var(--spotify-green);
+}
+
+.musica-card.tocando p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 16px;
+    }
+
+    .search-container input {
+        width: 200px;
+    }
+
+    .search-container input:focus {
+        width: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+    }
+
+    .musica-card {
+        padding: 12px;
+    }
+
+    .musica-card h3 {
+        font-size: 14px;
+    }
+
+    .musica-card p {
+        font-size: 12px;
+    }
+
+    .musica-card::after {
+        width: 40px;
+        height: 40px;
+        background-size: 20px;
+        bottom: 70px;
+    }
+}
+
+.musica-card p {
+    font-size: 14px;
+    color: #b3b3b3;
+    margin-bottom: 4px;
+}
